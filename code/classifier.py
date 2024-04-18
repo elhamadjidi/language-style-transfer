@@ -73,7 +73,7 @@ def get_batches(x, y, word2id, batch_size, min_len=5):
         t = min(s + batch_size, len(x))
 
         _x = []
-        max_len = max([len(sent) for sent in x[s:t]])
+        max_len = max(len(sent) for sent in x[s:t])
         max_len = max(max_len, min_len)
         for sent in x[s:t]:
             sent_id = [word2id[w] if w in word2id else unk for w in sent]

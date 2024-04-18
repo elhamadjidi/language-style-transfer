@@ -57,7 +57,7 @@ def get_batch(x, y, word2id, noisy=False, min_len=5):
     unk = word2id['<unk>']
 
     rev_x, go_x, x_eos, weights = [], [], [], []
-    max_len = max([len(sent) for sent in x])
+    max_len = max(len(sent) for sent in x)
     max_len = max(max_len, min_len)
     for sent in x:
         sent_id = [word2id[w] if w in word2id else unk for w in sent]

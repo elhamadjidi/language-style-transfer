@@ -80,7 +80,7 @@ def get_lm_batches(x, word2id, batch_size):
         t = min(s + batch_size, len(x))
 
         go_x, x_eos, weights = [], [], []
-        max_len = max([len(sent) for sent in x[s:t]])
+        max_len = max(len(sent) for sent in x[s:t])
         for sent in x[s:t]:
             sent_id = [word2id[w] if w in word2id else unk for w in sent]
             l = len(sent)
