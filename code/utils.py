@@ -1,6 +1,6 @@
-import random
 
 import numpy as np
+import secrets
 
 
 def strip_eos(sents):
@@ -42,7 +42,7 @@ def reorder(order, _x):
 def noise(x, unk, word_drop=0.0, k=3):
     n = len(x)
     for i in range(n):
-        if random.random() < word_drop:
+        if secrets.SystemRandom().random() < word_drop:
             x[i] = unk
 
     # slight shuffle such that |sigma[i]-i| <= k
