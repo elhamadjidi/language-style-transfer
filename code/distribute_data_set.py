@@ -1,10 +1,10 @@
-from random import shuffle
+import secrets
 
 
 def distribute(original_file_path, distribute_dict):
     original_file = open(original_file_path, 'r', encoding='utf-8')
     original_lines = original_file.readlines()
-    shuffle(original_lines)
+    secrets.SystemRandom().shuffle(original_lines)
     original_lines_len = len(original_lines)
     sum_of_val = sum(distribute_dict.values())
     list_norm = map(lambda item: (item[0], int(item[1] / sum_of_val * original_lines_len)), distribute_dict.items())

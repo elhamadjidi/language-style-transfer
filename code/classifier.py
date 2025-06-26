@@ -1,12 +1,12 @@
 import os
 import time
-import random
 import tensorflow as tf
 
 from options import load_arguments
 from vocab import Vocabulary, build_vocab
 from file_io import load_sent
 from nn import cnn
+import secrets
 
 
 class Model(object):
@@ -127,7 +127,7 @@ if __name__ == '__main__':
         if args.train:
             batches = get_batches(train_x, train_y,
                                   vocab.word2id, args.batch_size)
-            random.shuffle(batches)
+            secrets.SystemRandom().shuffle(batches)
 
             start_time = time.time()
             step = 0
